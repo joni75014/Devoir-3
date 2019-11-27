@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWPGestionSalles", "UWPGestionSalles\UWPGestionSalles.csproj", "{55F73CC0-6E9E-4F22-A159-F074BACDBF22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassesMetier", "ClassesMetier\ClassesMetier.csproj", "{85D26C67-1F8F-48E5-B245-CB489EF3DE12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassesMetier", "ClassesMetier\ClassesMetier.csproj", "{85D26C67-1F8F-48E5-B245-CB489EF3DE12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionnaireBDD", "GestionnaireBDD\GestionnaireBDD.csproj", "{E600DD06-7956-4909-83FA-DE858E6BFCF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionnaireBDD", "GestionnaireBDD\GestionnaireBDD.csproj", "{E600DD06-7956-4909-83FA-DE858E6BFCF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

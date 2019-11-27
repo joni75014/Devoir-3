@@ -54,25 +54,33 @@ namespace GestionnaireBDD
         public List<Place> GetAllPlacesByIdManifestation(int idManif, int idSalle)
         {
 
-                 List<Place> lesPlaces = new List<Place>();
-                 cmd = new MySqlCommand("select idPlace, nbPlaces, nomSalle, libre, numPlace, numSalle, codeTarif from manifestation inner join occuper on idManif = numManif inner join place on numPlace = place.idPlace where idManif =" + idManif + " and place.numSalle =" + idSalle + ";", cnx);
-                 dr = cmd.ExecuteReader();
+            List <Place> lesPlaces = new List<Place>();
 
-                while (dr.Read())
+            cmd = new MySqlCommand("select numSalle, numPlace, libre, numTarif from manifestation inner join occuper on idManif = numManif inner join place on numPlace = place.idPlace where idManif =" + idManif + " and place.numSalle =" + idSalle + ";", cnx);
+            dr = cmd.ExecuteReader();
+            var Etat = 'o';
+
+            while (dr.Read())
                {
                  Place unePlace = new Place()
                {
               IdPlace = Convert.ToInt16(dr[0].ToString()),
-              CodeTarif = Convert.ToChar(dr[1].ToString()),
+              CodeTarif = Convert.ToChar(dr[7].ToString()),
               Occupee = Convert.ToBoolean(dr[2].ToString()),
+              Etat = Convert.ToChar(dr[4].ToString()),
+              Prix = dr[5].ToString(),
 
+              
              };
+                if (dr[4].ToString() == 0)
+                {
+                    Etat = '1'; 
+                }
                 lesPlaces.Add(unePlace);
 
                 
 
-
-        }
+            }
             dr.Close();
             return lesPlaces;
 
@@ -90,7 +98,8 @@ namespace GestionnaireBDD
                 {
                     IdTarif = Convert.ToChar(dr[0].ToString()),
                     NomTarif = dr[1].ToString(),
-                    Prix = Convert.ToDouble(dr[2].ToString())
+                    Prix = Convert.ToDouble(dr[2].ToString()),
+                    
                 };
                 lesTarifs.Add(unTarif);
             }
@@ -102,7 +111,7 @@ namespace GestionnaireBDD
 
         public void ReserverPlace(int idPlace, int idSalle,int idManif)
         {
-          
+            cmd = new MySqlCommand("update occuper set libre = 1 where numManif=" + idManif + "AND numPlace=" + idPlace + "AND numSalle=" + idSalle + " ", cnx);
         }
     }
 }
